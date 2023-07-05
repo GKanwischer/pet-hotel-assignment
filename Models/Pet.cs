@@ -27,6 +27,11 @@ namespace pet_hotel
         [ForeignKey("PetOwners")]
         public int petOwnerId { get; set; }
 
-        Nullable<DateTime> checkedInAt = null;
+        public DateTime checkedInAt { get; set; }
+
+        public void checkIn() {
+            checkedInAt = DateTime.Now;
+        }
+
     }
 }
