@@ -5,7 +5,28 @@ using System;
 
 namespace pet_hotel
 {
-    public enum PetBreedType {}
-    public enum PetColorType {}
-    public class Pet {}
+    public enum PetBreedType {
+        Shepherd, Poodle, Beagle, Bulldog, Terrier, Boxer, Labrador, Retriever
+        // DMX (WHERE MY DOGS AT)
+    }
+    public enum PetColorType {
+        White, Black, Golden, Tricolor, Spotted
+    }
+    public class Pet {
+        public int id { get; set; }
+
+        [Required]
+        public string name { get; set; }
+
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public PetBreedType breed { get; set; }
+
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public PetColorType color { get; set; }
+
+        [ForeignKey("PetOwners")]
+        public int petOwnerId { get; set; }
+
+        Nullable<DateTime> checkedInAt = null;
+    }
 }
